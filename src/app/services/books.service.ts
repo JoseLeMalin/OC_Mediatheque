@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Book, BookInterface, CreateBook } from 'src/models/book.model';
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
+import { Book, BookInterface, CreateBook } from "src/models/book.model";
 import {
   Database,
   DatabaseReference,
@@ -9,19 +9,19 @@ import {
   onValue,
   ref as refDatabase,
   set,
-} from 'firebase/database';
-import { v4 as uuidv4 } from 'uuid';
+} from "firebase/database";
+import { v4 as uuidv4 } from "uuid";
 //import { Storage, getStorage} from '@angular/fire/storage';
 import {
   FirebaseStorage,
   getStorage,
   ref as refStorage,
   uploadBytes,
-} from 'firebase/storage';
-import { firebaseApp } from 'src/environments/environment';
+} from "firebase/storage";
+import { firebaseApp } from "src/environments/environment";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class BooksService {
   private _bookList: BookInterface[] = [];
@@ -31,7 +31,7 @@ export class BooksService {
   private _database: Database = getDatabase(firebaseApp);
   private _storage: FirebaseStorage = getStorage(
     firebaseApp,
-    'oc-mediatheque.appspot.com/mediatheque_file_storage'
+    "oc-mediatheque.appspot.com/mediatheque_file_storage"
   );
 
   public getFirebaseDb(): Database {
@@ -51,7 +51,7 @@ export class BooksService {
 
   public async saveBooks(): Promise<unknown> {
     try {
-      set(refDatabase(this.getFirebaseDb(), '/books'), this._bookList);
+      set(refDatabase(this.getFirebaseDb(), "/books"), this._bookList);
       return Promise.resolve(true);
     } catch (error) {
       return Promise.reject(error);
@@ -112,7 +112,7 @@ export class BooksService {
    */
   public async getBookList() {
     try {
-      const bookList = refDatabase(this.getFirebaseDb(), '/books');
+      const bookList = refDatabase(this.getFirebaseDb(), "/books");
 
       onValue(bookList, (snapshot) => {
         const data = snapshot.val();
@@ -135,7 +135,7 @@ export class BooksService {
     try {
       const singleBook: DatabaseReference = refDatabase(
         this.getFirebaseDb(),
-        '/books/' + id
+        "/books/" + id
       );
       onValue(singleBook, (snapshot) => {
         const data = snapshot.val();
@@ -147,32 +147,27 @@ export class BooksService {
     return Promise.reject();
   }
 
-  public async addImageBook(): Promise<void> {
+  public async uploadFile(fileInput: File | null): Promise<void> {
     try {
-      const fileInput: string = '';
       // Create a reference to picture
       const storage = getStorage();
       console.log(`storage: ${JSON.stringify(storage)}`);
-
+      const uuidFile = uuidv4();
       // Create a reference to '/mediatheque_file_storage'
       const pictureStorageRef = refStorage(
         storage,
-        `gs://oc-mediatheque.appspot.com/mediatheque_file_storage/${uuidv4}`
+        `gs://oc-mediatheque.appspot.com/mediatheque_file_storage/${uuidFile}-${fileInput?.name}`
       );
 
-      //const filetest: File = 'src/assets/EPP_Salut.gif';
-
       const newBlob = new Blob([JSON.stringify(fileInput)], {
-        type: 'application/json',
+        type: "application/json",
       });
       console.log(`newBlob: ${JSON.stringify(newBlob)}`);
 
-      /*
       await uploadBytes(pictureStorageRef, newBlob).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
+        console.log("Uploaded a blob or file!");
         console.log(`newBlob: ${JSON.stringify(newBlob)}`);
       });
-      */
     } catch (error) {
       console.log(`error: ${error}`);
     }
