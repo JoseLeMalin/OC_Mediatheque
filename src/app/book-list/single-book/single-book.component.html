@@ -1,0 +1,39 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div class="example-header-image">
+      <mat-card-title> Book Title: {{ title }} </mat-card-title>
+      <mat-card-subtitle> Book author: {{ author }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <p>Book synopsis: {{ synopsis }}</p>
+
+      <p>Book id: {{ id }}</p>
+    </div>
+    <div>
+      <form [formGroup]="addImageFormGroup">
+        <!--<mat-form-field appearance="legacy">
+          <mat-label>Input</mat-label>
+
+        </mat-form-field>-->
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          id="inputFilePath"
+          placeholder="File"
+          formControlName="fileInput"
+        />
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          (click)="onAddImage($event)"
+        >
+          Add image
+        </button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

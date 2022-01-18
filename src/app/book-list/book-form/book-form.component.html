@@ -1,0 +1,51 @@
+<div>Add new book</div>
+
+<form [formGroup]="newBookFormGroup" (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="titleInput"
+      placeholder="Enter title"
+      formControlName="titleInput"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="exampleSynopsisInput"
+      placeholder="Enter synopsis"
+      formControlName="synopsisInput"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="examplePhotoInput"
+      placeholder="Enter photo link"
+      formControlName="photoInput"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="exampleAuthorInput"
+      placeholder="Enter author"
+      formControlName="authorInput"
+    />
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button
+    [disabled]="newBookFormGroup.invalid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Submit
+  </button>
+</form>

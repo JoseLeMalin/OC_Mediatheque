@@ -1,0 +1,32 @@
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let book of bookList">
+    <app-single-book
+      [id]="book.id"
+      [title]="book.title"
+      [author]="book.author"
+      [photo]="book.photo"
+      [synopsis]="book.synopsis"
+    >
+    </app-single-book>
+  </mat-list-item>
+</mat-list>
+
+<button type="button" (click)="onNewBook()">Add new book</button>
+<!--<tr>
+  <app-single-book
+    *ngFor="let book of bookList"
+    [id]="book.id"
+    [title]="book.title"
+    [author]="book.author"
+    [photo]="book.photo"
+    [synopsis]="book.synopsis"
+  >
+  </app-single-book>
+</tr>
+<mat-list role="list">
+  <mat-list-item role="listitem">Item 1</mat-list-item>
+  <mat-list-item role="listitem">Item 2</mat-list-item>
+  <mat-list-item role="listitem">Item 3</mat-list-item>
+</mat-list>
+<button type="button" (click)="onNewBook()">Add new book</button>
+-->
