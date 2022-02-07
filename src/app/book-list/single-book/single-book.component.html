@@ -11,24 +11,16 @@
 
       <p>Book id: {{ id }}</p>
     </div>
+    <div *ngIf="this.picture">
+      <!-- <img [src]="this.picture" alt="this is the picture" />-->
+      <img
+        mat-card-sm-image
+        [src]="this.picture"
+        alt="Picture of the book {{ this.title }}"
+      />
+    </div>
     <div>
-      <form [formGroup]="addImageFormGroup">
-        <!--<mat-form-field appearance="legacy">
-          <mat-label>Input</mat-label>
-
-        </mat-form-field>-->
-        <input
-          type="file"
-          class="form-control"
-          id="inputFilePath"
-          placeholder="File"
-          formControlName="fileInput"
-          (change)="detectFiles($event)"
-        />
-        <button mat-raised-button color="primary" type="submit">
-          Add image
-        </button>
-      </form>
+      <!--<button type="button" (click)="deleteBook()">Delete Book</button>-->
     </div>
   </mat-card-content>
 </mat-card>

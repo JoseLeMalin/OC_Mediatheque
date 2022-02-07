@@ -1,8 +1,22 @@
-.content {
-  display: flex;
+/* .content {
   margin: 82px auto 32px;
-  padding: 0 16px;
+  padding: 16px;
   max-width: 960px;
-  flex-direction: column;
   align-items: center;
+} */
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+mat-sidenav {
+  width: 100%;
+}
+.content {
+  padding: 16px;
+}
+$toolbar-title-padding: 16px !default;
+.toolbar-title {
+  margin: 0 $toolbar-title-padding 0 $toolbar-title-padding;
 }

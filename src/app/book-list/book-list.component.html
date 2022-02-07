@@ -1,17 +1,19 @@
-<mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let book of bookList">
-    <app-single-book
-      [id]="book.id"
-      [title]="book.title"
-      [author]="book.author"
-      [photo]="book.photo"
-      [synopsis]="book.synopsis"
-    >
-    </app-single-book>
-  </mat-list-item>
-</mat-list>
-
-<button type="button" (click)="onNewBook()">Add new book</button>
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <mat-list role="list" *ngFor="let book of bookList">
+    <mat-list-item role="listitem" fxFlex="50%">
+      <app-single-book
+        [id]="book.id"
+        [title]="book.title"
+        [author]="book.author"
+        [picture]="book.picture"
+        [synopsis]="book.synopsis"
+        fxFlex
+      >
+      </app-single-book>
+    </mat-list-item>
+  </mat-list>
+  <button type="button" (click)="onNewBook()">Add new book</button>
+</div>
 <!--<tr>
   <app-single-book
     *ngFor="let book of bookList"

@@ -1,6 +1,14 @@
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 16px;
+.item {
+  border-radius: 0.2em;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 2em;
+  padding: 4em 1em;
+  text-transform: uppercase;
+}
+.item-1 {
+  background-color: #009169;
+}
+.content {
+  padding: 16px;
 }

@@ -1,22 +1,58 @@
-<nav class="navbar navbar-default">
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="toolbar-title">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span> Appli Perso </span>
+    <div fxLayout fxFlex fxLayoutAlign="flex-end">
+      <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+        <li fxHide.xs>
+          <a mat-button [routerLink]="'/books'">Livres</a>
+        </li>
+        <li fxHide.xs>
+          <a mat-button [routerLink]="'/books/new'">Ajouter un Livre</a>
+        </li>
+        <li fxHide.xs>
+          <a mat-button [routerLink]="'auth/signup'">Créer un compte</a>
+        </li>
+        <li fxHide.xs>
+          <a mat-button [routerLink]="'auth/signin'">Connexion</a>
+        </li>
+        <li fxHide.xs>
+          <a mat-button (click)="onSignOut()" *ngIf="isAuth"> Déconnexion </a>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!--
+
+
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <a routerLink="books">Livres</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li routerLinkActive="active">
-        <a routerLink="auth/signup">Créer un compte</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="auth/signin">Connexion</a>
-      </li>
-      <li>
-        <a (click)="onSignOut()" style="cursor: pointer" *ngIf="isAuth">
-          Déconnexion
-        </a>
-      </li>
-    </ul>
+    <span>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="books">Livres</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/books/new">Ajouter un Livre</a>
+        </li>
+      </ul>
+    </span>
+    <span>
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active">
+          <a routerLink="auth/signup">Créer un compte</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="auth/signin">Connexion</a>
+        </li>
+        <li>
+          <a (click)="onSignOut()" style="cursor: pointer" *ngIf="isAuth">
+            Déconnexion
+          </a>
+        </li>
+      </ul>
+    </span>
   </div>
-</nav>
+  -->

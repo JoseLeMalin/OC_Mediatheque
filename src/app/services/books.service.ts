@@ -14,11 +14,13 @@ import { v4 as uuidv4 } from "uuid";
 //import { Storage, getStorage} from '@angular/fire/storage';
 import {
   FirebaseStorage,
+  getDownloadURL,
   getStorage,
   ref as refStorage,
-  uploadBytes,
+  uploadBytesResumable,
 } from "firebase/storage";
-import { firebaseApp } from "src/environments/environment";
+import { firebaseApp, environment } from "src/environments/environment";
+import { deleteDoc, doc, Firestore, getFirestore } from "firebase/firestore";
 
 @Injectable({
   providedIn: "root",
@@ -33,10 +35,7 @@ export class BooksService {
     firebaseApp,
     "oc-mediatheque.appspot.com/mediatheque_file_storage"
   );
-
-  public getFirebaseDb(): Database {
-    return this._database;
-  }
+  private _firestore: Firestore = getFirestore(firebaseApp);
 
   public getbookListSubject(): Subject<BookInterface[]> {
     return this._bookListSubject;
@@ -51,7 +50,7 @@ export class BooksService {
 
   public async saveBooks(): Promise<unknown> {
     try {
-      set(refDatabase(this.getFirebaseDb(), "/books"), this._bookList);
+      set(refDatabase(this._database, "/books"), this._bookList);
       return Promise.resolve(true);
     } catch (error) {
       return Promise.reject(error);
@@ -67,7 +66,7 @@ export class BooksService {
     try {
       const newBookToCreate: BookInterface = {
         id: uuidv4(),
-        photo: newBook.photo,
+        picture: newBook.picture,
         synopsis: newBook.synopsis,
         title: newBook.title,
         author: newBook.author,
@@ -90,6 +89,10 @@ export class BooksService {
    */
   public async deleteBook(bookToRemove: BookInterface): Promise<unknown> {
     try {
+      console.log(`bookToRemove.picture: ${bookToRemove.picture}`);
+      if (bookToRemove.picture) {
+        await deleteDoc(doc(this._firestore, bookToRemove.picture));
+      }
       const bookIndexToRemove = this._bookList.findIndex((book) => {
         if (book === bookToRemove) {
           return true;
@@ -108,11 +111,17 @@ export class BooksService {
   }
 
   /**
+   * Delete file stored in the database if the user doesn't save the book
+   * @param fileUrl
+   */
+  public deleteFile(fileUrl: string) {}
+
+  /**
    * Get all books stored in database
    */
   public async getBookList() {
     try {
-      const bookList = refDatabase(this.getFirebaseDb(), "/books");
+      const bookList = refDatabase(this._database, "/books");
 
       onValue(bookList, (snapshot) => {
         const data = snapshot.val();
@@ -134,7 +143,7 @@ export class BooksService {
   public async getSingleBook(id: number): Promise<unknown> {
     try {
       const singleBook: DatabaseReference = refDatabase(
-        this.getFirebaseDb(),
+        this._database,
         "/books/" + id
       );
       onValue(singleBook, (snapshot) => {
@@ -147,8 +156,13 @@ export class BooksService {
     return Promise.reject();
   }
 
-  public async uploadFile(fileInput: File | null): Promise<void> {
+  /**
+   *
+   * @param fileInput
+   */
+  public async uploadFile(fileInput: File | null): Promise<string> {
     try {
+      if (fileInput === null) return Promise.reject();
       // Create a reference to picture
       const storage = getStorage();
       console.log(`storage: ${JSON.stringify(storage)}`);
@@ -159,17 +173,41 @@ export class BooksService {
         `gs://oc-mediatheque.appspot.com/mediatheque_file_storage/${uuidFile}-${fileInput?.name}`
       );
 
-      const newBlob = new Blob([JSON.stringify(fileInput)], {
+      const newBlob = new Blob([fileInput], {
         type: "application/json",
       });
       console.log(`newBlob: ${JSON.stringify(newBlob)}`);
+      const metadata = {
+        contentType: "image/jpeg",
+      };
 
-      await uploadBytes(pictureStorageRef, newBlob).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
-        console.log(`newBlob: ${JSON.stringify(newBlob)}`);
-      });
+      await uploadBytesResumable(pictureStorageRef, newBlob, metadata).then(
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+          console.log("Uploaded a blob or file!");
+          console.log(`newBlob: ${JSON.stringify(newBlob)}`);
+        }
+      );
+      console.log(`metadata: ${JSON.stringify(metadata)}`);
+
+      const urlPicture = await getDownloadURL(pictureStorageRef);
+      console.log(`urlPicture: ${urlPicture}`);
+      return Promise.resolve(urlPicture);
     } catch (error) {
       console.log(`error: ${error}`);
+      return Promise.reject("Error");
     }
   }
 }
