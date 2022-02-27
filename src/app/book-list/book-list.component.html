@@ -1,13 +1,12 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+<div fxFlex fxLayout="row" fxLayoutAlign="space-around center" class="content">
   <mat-list role="list" *ngFor="let book of bookList">
-    <mat-list-item role="listitem" fxFlex="50%">
+    <mat-list-item role="listitem" class="item">
       <app-single-book
         [id]="book.id"
         [title]="book.title"
         [author]="book.author"
         [picture]="book.picture"
         [synopsis]="book.synopsis"
-        fxFlex
       >
       </app-single-book>
     </mat-list-item>

@@ -1,10 +1,13 @@
-/* .content {
-  margin: 82px auto 32px;
-  padding: 16px;
-  max-width: 960px;
-  align-items: center;
-} */
-
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 30px;
+}
 mat-sidenav-container,
 mat-sidenav-content,
 mat-sidenav {
@@ -12,11 +15,39 @@ mat-sidenav {
 }
 mat-sidenav {
   width: 100%;
+  margin: 16px;
+  width: 200px;
+  border-right: none;
+  background: #002b5c;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
 }
 .content {
   padding: 16px;
+  height: 100%;
 }
-$toolbar-title-padding: 16px !default;
-.toolbar-title {
-  margin: 0 $toolbar-title-padding 0 $toolbar-title-padding;
+.example-container-sidenav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(182, 25, 25);
+}
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.example-sidenav {
+  padding: 20px;
 }

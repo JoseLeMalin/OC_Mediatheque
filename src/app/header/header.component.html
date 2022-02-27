@@ -1,11 +1,15 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row class="toolbar-title">
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span> Appli Perso </span>
-    <div fxLayout fxFlex fxLayoutAlign="flex-end">
-      <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+<!-- <mat-toolbar color="primary"> -->
+<mat-toolbar color="primary" fxLayout fxFlex>
+  <mat-toolbar-row fxLayout fxFlex>
+    <div>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span> Appli Perso </span>
+      <span class="example-spacer"></span>
+    </div>
+    <div fxLayout fxFlex class="navigation">
+      <ul fxLayout>
         <li fxHide.xs>
           <a mat-button [routerLink]="'/books'">Livres</a>
         </li>
@@ -25,6 +29,7 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+<!-- </mat-toolbar> -->
 <!--
 
 

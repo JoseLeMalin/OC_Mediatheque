@@ -1,44 +1,43 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { BookFormComponent } from './book-list/book-form/book-form.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { SingleBookComponent } from './book-list/single-book/single-book.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { SigninComponent } from "./auth/signin/signin.component";
+import { SignupComponent } from "./auth/signup/signup.component";
+import { BookFormComponent } from "./book-list/book-form/book-form.component";
+import { BookListComponent } from "./book-list/book-list.component";
+import { SingleBookComponent } from "./book-list/single-book/single-book.component";
+import { AuthGuardService } from "./services/auth-guard.service";
 
 const appRoutes: Routes = [
   {
-    path: 'auth/signup',
+    path: "auth/signup",
     component: SignupComponent,
   },
-  { path: 'auth/signin', component: SigninComponent },
+  { path: "auth/signin", component: SigninComponent },
   {
-    path: 'books',
+    path: "books",
     //canActivate: [AuthGuardService],
     component: BookListComponent,
   },
   {
-    path: 'books/new',
+    path: "books/new",
     //canActivate: [AuthGuardService],
     component: BookFormComponent,
   },
   {
-    path: 'books/view/:id',
+    path: "books/view/:id",
     canActivate: [AuthGuardService],
     component: SingleBookComponent,
   },
   {
-    path: '',
-    redirectTo: 'auth/signup',
-    pathMatch: 'full',
+    path: "",
+    redirectTo: "auth/signup",
+    pathMatch: "full",
   },
   {
-    path: '**',
-    redirectTo: 'auth/signup',
+    path: "**",
+    redirectTo: "auth/signup",
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],

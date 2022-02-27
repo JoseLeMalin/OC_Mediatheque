@@ -1,11 +1,25 @@
-$toolbar-title-padding: 16px !default;
-.toolbar-title {
-  margin: 0 $toolbar-title-padding 0 $toolbar-title-padding;
-}
-
 .navigation-items {
   list-style: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
+  justify-content: flex-end;
+  align-content: space-between;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-content: space-between;
+  list-style: none;
+  margin: 0;
+}
+.navigation li {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
 }

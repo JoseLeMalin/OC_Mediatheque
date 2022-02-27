@@ -1,25 +1,63 @@
-<mat-sidenav-container>
+<!--<mat-sidenav-container>
+  
   <mat-sidenav #sidenav role="navigation">
     <button mat-button (click)="sidenav.toggle()">Toggle</button>
-    <mat-nav-list>
-      <a mat-list-item> Accounts></a>
-      <a mat-list-item> Create Account></a>
-      <a mat-list-item> Contacts></a>
-      <a mat-list-item> Create Contact></a>
-      <a mat-list-item> Activities></a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
+
     <div class="content">
-      <!--<app-header></app-header>-->
+      <app-header></app-header>
     </div>
-  </mat-sidenav-content>
-  <!--
+  </mat-sidenav>
+  <mat-sidenav-content> </mat-sidenav-content>
+
   <mat-sidenav-content>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
-  </mat-sidenav-content>-->
+  </mat-sidenav-content>
 </mat-sidenav-container>
-<p>Prout</p>
+
+<div class="content">
+  <app-header></app-header>
+</div>
+<mat-nav-list>
+  <a mat-list-item> Accounts></a>
+  <a mat-list-item> Create Account></a>
+  <a mat-list-item> Contacts></a>
+  <a mat-list-item> Create Contact></a>
+  <a mat-list-item> Activities></a>
+</mat-nav-list>
 <router-outlet></router-outlet>
+-->
+<!-- <div>
+      <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <p>Auto-resizing sidenav</p>
+          <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+          <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+          </button>
+        </mat-drawer>
+
+        <div class="example-sidenav-content">
+          <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+          </button>
+        </div>
+      </mat-drawer-container>
+    </div> -->
+<!--  https://zoaibkhan.com/blog/create-a-responsive-sidebar-menu-with-angular-material/#:~:text=To%20make%20the%20sidebar%20responsive,The%20other%20mode%20is%20over. -->
+<mat-sidenav-container class="example-container-sidenav">
+  <mat-sidenav mode="side" class="mat-elevation-z8"
+    >Sidenav content
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="top-of-page"></div>
+    <div>
+      <app-header></app-header>
+    </div>
+    <router-outlet></router-outlet>
+    <p>Prout</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- </mat-sidenav-content> -->
