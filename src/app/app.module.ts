@@ -32,6 +32,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { DisplayService } from "./services/display.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +67,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     provideDatabase(() => getDatabase()),
     BrowserAnimationsModule,
   ],
-  providers: [AuthGuardService, AuthService, BooksService],
+  providers: [AuthGuardService, AuthService, BooksService, DisplayService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

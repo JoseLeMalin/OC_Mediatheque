@@ -46,18 +46,27 @@
       </mat-drawer-container>
     </div> -->
 <!--  https://zoaibkhan.com/blog/create-a-responsive-sidebar-menu-with-angular-material/#:~:text=To%20make%20the%20sidebar%20responsive,The%20other%20mode%20is%20over. -->
+<div class="content">
+  <app-header></app-header>
+</div>
 <mat-sidenav-container class="example-container-sidenav">
-  <mat-sidenav mode="side" class="mat-elevation-z8"
+  <mat-sidenav #sidenav="matSidenav" mode="side" class="mat-elevation-z8"
     >Sidenav content
+    <button (click)="sidenav.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
   </mat-sidenav>
   <mat-sidenav-content>
     <div id="top-of-page"></div>
-    <div>
-      <app-header></app-header>
-    </div>
-    <router-outlet></router-outlet>
+
+    <article fxFlex fxFlexFill>
+      <router-outlet></router-outlet>
+    </article>
     <p>Prout</p>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
+<button (click)="sidenav.toggle()" mat-icon-button>
+  <mat-icon>menu</mat-icon>
+</button>
 <!-- </mat-sidenav-content> -->
