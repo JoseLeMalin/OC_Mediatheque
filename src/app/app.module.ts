@@ -32,8 +32,12 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { DisplayService } from "./services/display.service";
-
+import { SidenavService } from "./services/sidenav.service";
+import { SidenavComponent } from "./sidenav/sidenav.component";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatCommonModule } from "@angular/material/core";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +47,7 @@ import { DisplayService } from "./services/display.service";
     SingleBookComponent,
     BookFormComponent,
     HeaderComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,10 @@ import { DisplayService } from "./services/display.service";
     MatIconModule,
     MatSidenavModule,
     FlexLayoutModule,
+    MatBadgeModule,
+    MatChipsModule,
+    MatCommonModule,
+    MatDatepickerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
@@ -67,7 +76,7 @@ import { DisplayService } from "./services/display.service";
     provideDatabase(() => getDatabase()),
     BrowserAnimationsModule,
   ],
-  providers: [AuthGuardService, AuthService, BooksService, DisplayService],
+  providers: [AuthGuardService, AuthService, BooksService, SidenavService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

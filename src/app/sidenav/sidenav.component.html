@@ -1,0 +1,19 @@
+<div>
+  <p>
+    Premier badge:
+    <button
+      mat-raised-button
+      [matBadge]="nbAlerts"
+      [matBadgeHidden]="hidden"
+      matBadgePosition="below before"
+      matBadgeSize="small"
+      (click)="toggleBadgeVisibility()"
+    >
+      Hide
+    </button>
+  </p>
+  <span> </span>
+  <p>
+    <mat-chip color="primary" disabled> Premier chip: </mat-chip>
+  </p>
+</div>

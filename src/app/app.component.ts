@@ -1,7 +1,7 @@
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component, ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material/sidenav";
-import { DisplayService } from "./services/display.service";
+import { SidenavService } from "./services/sidenav.service";
 
 @Component({
   selector: "app-root",
@@ -9,30 +9,30 @@ import { DisplayService } from "./services/display.service";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  @ViewChild('matSidenav')
-  public matSidenav!: MatSidenav;
+  @ViewChild("matSidenav") private _matSidenav!: MatSidenav;
   title = "OC-mediatheque";
   showFiller = false;
-  private _sidenav!: MatSidenav;
 
-  constructor(private _observer: BreakpointObserver, private _displayService: DisplayService) {}
-/**
+  constructor(
+    private _observer: BreakpointObserver,
+    private _sidenavService: SidenavService
+  ) {}
+
+  /**
    * OnInit life cycle hook
    */
- public ngOnInit(): void {
-  // Store sidenav to service
-  this._displayService
-    .setSidenav(this.matSidenav);
-}
-  
+  public ngOnInit(): void {}
+
+  /**
+   *
+   */
   ngAfterViewInit() {
+    this._sidenavService.sidenav = this._matSidenav;
     this._observer.observe(["(max-width: 800px)"]).subscribe((res) => {
       if (res.matches) {
-        this._sidenav.mode = "over";
-        this._sidenav.close();
+        this._matSidenav.mode = "over";
       } else {
-        this._sidenav.mode = "side";
-        this._sidenav.open();
+        this._matSidenav.mode = "side";
       }
     });
   }
