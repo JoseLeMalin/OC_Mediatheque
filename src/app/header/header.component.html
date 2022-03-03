@@ -15,14 +15,14 @@
         <li fxHide.xs>
           <a mat-button [routerLink]="'/books/new'">Ajouter un Livre</a>
         </li>
-        <li fxHide.xs>
+        <li *ngIf="!isAuth" fxHide.xs>
           <a mat-button [routerLink]="'auth/signup'">Créer un compte</a>
         </li>
-        <li fxHide.xs>
+        <li *ngIf="!isAuth" fxHide.xs>
           <a mat-button [routerLink]="'auth/signin'">Connexion</a>
         </li>
-        <li fxHide.xs>
-          <a mat-button (click)="onSignOut()" *ngIf="isAuth"> Déconnexion </a>
+        <li *ngIf="isAuth" fxHide.xs>
+          <a mat-button (click)="onSignOut()"> Déconnexion </a>
         </li>
       </ul>
     </div>

@@ -1,6 +1,11 @@
-<div fxFlex fxLayout="row" fxLayoutAlign="space-around center" class="booklist">
-  <mat-list role="list" *ngFor="let book of bookList">
-    <mat-list-item role="listitem" class="item">
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="3% grid">
+    <div
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let book of bookList"
+    >
       <app-single-book
         [id]="book.id"
         [title]="book.title"
@@ -9,10 +14,28 @@
         [synopsis]="book.synopsis"
       >
       </app-single-book>
-    </mat-list-item>
-  </mat-list>
+    </div>
+  </div>
+</div>
+
+<div>
   <button type="button" (click)="onNewBook()">Add new book</button>
 </div>
+<!-- <mat-list role="list">
+  class="cardscontainer"
+  <mat-list-item role="listitem" *ngFor="let book of bookList">
+    <app-single-book
+      [id]="book.id"
+      [title]="book.title"
+      [author]="book.author"
+      [picture]="book.picture"
+      [synopsis]="book.synopsis"
+    >
+    </app-single-book>
+  </mat-list-item>
+</mat-list>
+<button type="button" (click)="onNewBook()">Add new book</button> -->
+
 <!--<tr>
   <app-single-book
     *ngFor="let book of bookList"

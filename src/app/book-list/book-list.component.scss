@@ -1,18 +1,15 @@
-.item {
-  border-radius: 0.2em;
+.cardscontainer {
+  height: 100%;
   color: #ffffff;
   font-family: sans-serif;
-  font-size: 2em;
-  padding: 4em 1em;
-  text-transform: uppercase;
+  margin: 10% 10%;
   justify-content: center;
   align-items: center;
 }
 .item-1 {
   background-color: #009169;
 }
-
-.booklist {
-  padding: 16px;
-  height: 500px;
+.content {
+  padding: 2% 2%;
+  //margin: 2% 2%;
 }

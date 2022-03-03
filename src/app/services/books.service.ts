@@ -19,7 +19,7 @@ import {
   ref as refStorage,
   uploadBytesResumable,
 } from "firebase/storage";
-import { firebaseApp, environment } from "src/environments/environment";
+import { firebaseApp } from "src/environments/environment";
 import { deleteDoc, doc, Firestore, getFirestore } from "firebase/firestore";
 
 @Injectable({
@@ -45,7 +45,6 @@ export class BooksService {
   }
   constructor() {
     this.getBookList();
-    console.log(`Constructeur après getboolist: ${this._bookList}`);
   }
 
   public async saveBooks(): Promise<unknown> {

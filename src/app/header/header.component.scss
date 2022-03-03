@@ -1,7 +1,15 @@
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-content: space-between;
+  list-style: none;
+  margin: 0 auto;
+}
 .navigation-items {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0 auto;
+  margin: 0 auto;
   cursor: pointer;
   justify-content: flex-end;
   align-content: space-between;
@@ -9,17 +17,15 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-.navigation {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  align-content: space-between;
-  list-style: none;
-  margin: 0;
+.navigation ul {
+  text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
 }
 .navigation li {
   text-decoration: none;
   display: block;
-  padding: 1em;
   color: white;
+  text-align: center;
 }

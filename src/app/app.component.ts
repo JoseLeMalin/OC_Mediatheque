@@ -33,6 +33,7 @@ export class AppComponent {
         this._matSidenav.mode = "over";
       } else {
         this._matSidenav.mode = "side";
+        this._matSidenav.open();
       }
     });
   }
