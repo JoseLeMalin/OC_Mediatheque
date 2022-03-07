@@ -6,10 +6,12 @@
   justify-content: center;
   align-items: center;
 }
-.item-1 {
-  background-color: #009169;
-}
-.content {
+.singlebooklist {
+  height: 100%;
   padding: 2% 2%;
   //margin: 2% 2%;
+}
+
+.newbook {
+  margin: 3% auto 0 0;
 }

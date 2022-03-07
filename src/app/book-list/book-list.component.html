@@ -1,24 +1,19 @@
-<div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="3% grid">
-    <div
-      fxFlex="25%"
-      fxFlex.xs="100%"
-      fxFlex.sm="33%"
-      *ngFor="let book of bookList"
-    >
-      <app-single-book
-        [id]="book.id"
-        [title]="book.title"
-        [author]="book.author"
-        [picture]="book.picture"
-        [synopsis]="book.synopsis"
-      >
-      </app-single-book>
-    </div>
-  </div>
+<div class="singlebooklist" fxLayout="row wrap" fxLayoutGap="3% grid">
+  <app-single-book
+    fxFlex="25%"
+    fxFlex.xs="100%"
+    fxFlex.sm="33%"
+    *ngFor="let book of bookList"
+    [id]="book.id"
+    [title]="book.title"
+    [author]="book.author"
+    [picture]="book.picture"
+    [synopsis]="book.synopsis"
+  >
+  </app-single-book>
 </div>
 
-<div>
+<div class="newbook">
   <button type="button" (click)="onNewBook()">Add new book</button>
 </div>
 <!-- <mat-list role="list">

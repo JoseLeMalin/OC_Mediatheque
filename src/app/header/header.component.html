@@ -1,13 +1,14 @@
 <mat-toolbar color="primary" fxLayout fxFlex>
-  <mat-toolbar-row fxLayout fxFlex>
-    <div>
+  <mat-toolbar-row fxLayout="row wrap" fxFill fxLayoutGap="10%" color="primary">
+    <div fxFlex fxFlexOrder="1" class="home">
       <button (click)="toggleSidenav()" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
       <span> Appli Perso </span>
-      <span class="example-spacer"></span>
     </div>
-    <div fxLayout fxFlex class="navigation">
+    <div fxFlex fxFlexOrder="2" fxLayoutGap="5%" class="clock">{{ clock }}</div>
+
+    <div fxFlex fxFlexOrder="3" class="navigation">
       <ul fxLayout>
         <li fxHide.xs>
           <a mat-button [routerLink]="'/books'">Livres</a>

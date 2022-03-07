@@ -36,7 +36,7 @@ export class BookFormComponent implements OnInit {
 
   private _initform() {
     this.newBookFormGroup = this._formBuilder.group({
-      titleInput: new FormControl(`Title`, []),
+      titleInput: new FormControl("", []),
       synopsisInput: new FormControl(`Synopsis`, []),
       pictureInput: new FormControl(`Picture`, []),
       authorInput: new FormControl(`Author`, []),

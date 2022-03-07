@@ -1,21 +1,25 @@
 .navigation {
+  width: 5%;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
   align-content: space-between;
   list-style: none;
-  margin: 0 auto;
+  //margin: 0 auto;
 }
-.navigation-items {
-  list-style: none;
-  padding: 0 auto;
-  margin: 0 auto;
-  cursor: pointer;
-  justify-content: flex-end;
-  align-content: space-between;
+.home {
+  display: flex;
 }
-.example-spacer {
-  flex: 1 1 auto;
+.clock {
+  display: flex;
+  //position: absolute;
+
+  color: white;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #000000;
+  font-size: 20px;
+  font-family: Orbitron;
+  letter-spacing: 7px;
 }
 .navigation ul {
   text-decoration: none;

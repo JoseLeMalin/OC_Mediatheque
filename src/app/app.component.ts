@@ -12,7 +12,7 @@ export class AppComponent {
   @ViewChild("matSidenav") private _matSidenav!: MatSidenav;
   title = "OC-mediatheque";
   showFiller = false;
-
+  public clock: string = "";
   constructor(
     private _observer: BreakpointObserver,
     private _sidenavService: SidenavService

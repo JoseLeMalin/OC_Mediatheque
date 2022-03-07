@@ -6,21 +6,32 @@
 
   justify-content: center;
 } */
+
+mat-form-field {
+  margin: 2% auto;
+  padding: 1% 1%;
+  height: auto;
+  width: 100%;
+}
+mat-hint {
+  padding-bottom: 3%;
+}
 .signinform {
   height: 100%;
   width: 20%;
-  margin-top: 2%;
-  margin-left: 40%;
+  margin: 2% 20%;
+  padding: 0% 15%;
   border-radius: 20px;
   box-sizing: border-box;
 }
 
 .title {
-  color: #eee;
+  height: 100%;
   font-family: sans-serif;
   font-size: 36px;
   font-weight: 600;
-  margin-top: 5px;
+  margin: 2% auto;
+  padding: 2% 2%;
 }
 
 .subtitle {
@@ -33,6 +44,9 @@
   margin-top: 5%;
 }
 
+.password {
+  width: 25%;
+}
 .submit {
   background-color: #08d;
   border-radius: 12px;
