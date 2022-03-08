@@ -1,8 +1,14 @@
 .book-form {
-  height: 100%;
-  padding: 2% 35%;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.form {
+  width: 30%;
 }
 mat-form-field {
   width: 100%;
@@ -12,6 +18,5 @@ mat-divider {
   width: 100%;
 }
 .book-form input {
-  width: 100%;
   margin: 1% 0;
 }

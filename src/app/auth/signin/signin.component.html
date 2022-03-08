@@ -1,11 +1,11 @@
-<div class="signinform" fxFlex>
-  <div class="title">Sign in</div>
+<div class="signinform">
   <form
     [formGroup]="signInFormGroup"
     (ngSubmit)="onSubmit()"
     #f="ngForm"
     class="form"
   >
+    <div class="title">Sign in</div>
     <mat-form-field color="primary" appearance="fill">
       <mat-label>Email address</mat-label>
       <input

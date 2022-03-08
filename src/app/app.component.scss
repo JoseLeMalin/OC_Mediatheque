@@ -1,19 +1,17 @@
 html,
 body {
-  margin: 0;
   height: 100%;
-}
-body {
+  width: 100%;
+  display: flex;
   font-style: normal;
   color: black;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  margin: 0;
-  padding: 30px;
 }
 mat-sidenav-container,
-mat-sidenav-content,
-mat-sidenav {
+mat-sidenav-content {
+  position: absolute;
   height: 100%;
+  width: 100%;
 }
 mat-sidenav {
   width: 15%;
@@ -24,35 +22,18 @@ mat-sidenav {
   background: #002b5c;
   color: white;
   text-align: center;
+  height: 100%;
 }
 
 .content {
-  padding: 0;
   height: 100%;
-}
-.example-container-sidenav {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 .example-container {
-  width: 500px;
-  height: 300px;
+  //width: 500px;
+  //height: 300px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.example-sidenav {
-  padding: 20px;
-}
-
 .routeroutlet {
-  display: flex;
+  width: 100%;
 }

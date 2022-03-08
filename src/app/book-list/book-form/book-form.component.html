@@ -1,76 +1,81 @@
-<div class="book-form" fxFlex>
-  <form
-    appearance="fill"
-    [formGroup]="newBookFormGroup"
-    (ngSubmit)="onUploadNewBook()"
-    #f="ngForm"
-  >
-    <h1>Add new book</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>Book Title:</mat-label>
+<div class="book-form" fxLayout>
+  <div class="form">
+    <form
+      appearance="fill"
+      [formGroup]="newBookFormGroup"
+      (ngSubmit)="onUploadNewBook()"
+      #f="ngForm"
+    >
+      <h1>Add new book</h1>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Book Title:</mat-label>
+          <input
+            matInput
+            color="primary"
+            type="text"
+            class="form-control"
+            id="titleInput"
+            placeholder="Enter title"
+            formControlName="titleInput"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Book's Author: </mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            id="exampleAuthorInput"
+            placeholder="Enter author"
+            formControlName="authorInput"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Book's synopsis</mat-label>
+          <textarea
+            matInput
+            type="text"
+            class="form-control"
+            id="exampleSynopsisInput"
+            placeholder="Enter synopsis"
+            formControlName="synopsisInput"
+          ></textarea>
+        </mat-form-field>
+      </div>
       <input
-        matInput
-        color="primary"
-        type="text"
-        class="form-control"
-        id="titleInput"
-        placeholder="Enter title"
-        formControlName="titleInput"
-        required
+        type="file"
+        id="inputFilePath"
+        formControlName="pictureInput"
+        (change)="detectFiles($event)"
       />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Book's Author: </mat-label>
-      <input
-        matInput
-        type="text"
-        class="form-control"
-        id="exampleAuthorInput"
-        placeholder="Enter author"
-        formControlName="authorInput"
-        required
-      />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Book's synopsis</mat-label>
-      <textarea
-        matInput
-        type="text"
-        class="form-control"
-        id="exampleSynopsisInput"
-        placeholder="Enter synopsis"
-        formControlName="synopsisInput"
-      ></textarea>
-    </mat-form-field>
-
-    <input
-      type="file"
-      id="inputFilePath"
-      formControlName="pictureInput"
-      (change)="detectFiles($event)"
-    />
-    <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
-    <mat-divider></mat-divider>
-    <span>
-      <button
-        mat-button
-        [disabled]="newBookFormGroup.invalid || fileIsUploading"
-        type="submit"
-        color="basic"
-      >
-        Submit
-      </button>
-      <span></span>
-      <button
-        [disabled]="newBookFormGroup.invalid || !fileUrl"
-        type="reset"
-        class="btn btn-secondary"
-        (click)="onCancelNewBook()"
-      >
-        Cancel
-      </button>
-    </span>
-  </form>
+      <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+      <mat-divider></mat-divider>
+      <span>
+        <button
+          mat-button
+          [disabled]="newBookFormGroup.invalid || fileIsUploading"
+          type="submit"
+          color="basic"
+        >
+          Submit
+        </button>
+        <span></span>
+        <button
+          [disabled]="newBookFormGroup.invalid || !fileUrl"
+          type="reset"
+          class="btn btn-secondary"
+          (click)="onCancelNewBook()"
+        >
+          Cancel
+        </button>
+      </span>
+    </form>
+  </div>
 </div>

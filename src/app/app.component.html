@@ -46,30 +46,29 @@
       </mat-drawer-container>
     </div> -->
 <!--  https://zoaibkhan.com/blog/create-a-responsive-sidebar-menu-with-angular-material/ -->
-<div class="content">
-  <div class="header">
-    <app-header></app-header>
-  </div>
-  <mat-sidenav-container class="example-container-sidenav">
-    <mat-sidenav #matSidenav="matSidenav" class="mat-elevation-z8"
-      ><app-sidenav></app-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div id="top-of-page"></div>
-      <div class="routeroutlet">
-        <article fxFlex fxFlexFill>
-          <router-outlet></router-outlet>
-        </article>
-      </div>
-      <div class="content">
-        <h1>To do list:</h1>
-        <p>
-          - N'utiliser qu'une page pour l'authentification -> Un composant HTML
-          qui change selon si on veut créer un compte ou se connecter. Peut être
-          utiliser les tab material:
-          https://material.angular.io/components/tabs/overview
-        </p>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
+<div class="header">
+  <app-header></app-header>
 </div>
+<mat-sidenav-container>
+  <mat-sidenav #matSidenav="matSidenav"
+    ><app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="top-of-page"></div>
+    <div class="routeroutlet">
+      <article>
+        <router-outlet></router-outlet>
+      </article>
+    </div>
+    <div class="content">
+      <h1>To do list:</h1>
+      <p>
+        - N'utiliser qu'une page pour l'authentification -> Un composant HTML
+        qui change selon si on veut créer un compte ou se connecter. Peut être
+        utiliser les tab material:
+        https://material.angular.io/components/tabs/overview
+      </p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
