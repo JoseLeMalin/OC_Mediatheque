@@ -4,7 +4,9 @@
       <button (click)="toggleSidenav()" mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
-      <span> Appli Perso </span>
+      <span>
+        <a mat-button routerLink="auth">Appli Perso</a>
+      </span>
     </div>
     <div class="clock">{{ clock }}</div>
 
@@ -17,10 +19,7 @@
           <a mat-button [routerLink]="'/books/new'">Ajouter un Livre</a>
         </li>
         <li *ngIf="!isAuth" fxHide.xs>
-          <a mat-button [routerLink]="'auth/signup'">Créer un compte</a>
-        </li>
-        <li *ngIf="!isAuth" fxHide.xs>
-          <a mat-button [routerLink]="'auth/signin'">Connexion</a>
+          <a mat-button [routerLink]="'auth'">Authentification</a>
         </li>
         <li *ngIf="isAuth" fxHide.xs>
           <a mat-button (click)="onSignOut()"> Déconnexion </a>

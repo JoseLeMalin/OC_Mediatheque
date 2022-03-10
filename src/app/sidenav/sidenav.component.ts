@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-sidenav",
@@ -6,12 +7,16 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent implements OnInit {
-  constructor() {}
+  constructor(private _router: Router) {}
   public hidden = false;
   public nbAlerts = 5;
   ngOnInit(): void {}
 
   public toggleBadgeVisibility = () => {
     this.hidden = !this.hidden;
+  };
+
+  onRouterHome = () => {
+    this._router.navigate(["auth"]);
   };
 }

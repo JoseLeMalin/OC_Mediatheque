@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../services/auth.service";
 import { getAuth, Auth, onAuthStateChanged } from "firebase/auth";
 import { SidenavService } from "../services/sidenav.service";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   public clock: string = "";
   constructor(
     private _authService: AuthService,
-    private _sidenavService: SidenavService
+    private _sidenavService: SidenavService,
+    private _router: Router
   ) {}
 
   /**
@@ -30,11 +32,16 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  public onClickHome = () => {
+    this._router.navigate(["'auth'"]);
+  };
+
   /**
    *
    */
   async onSignOut(): Promise<void> {
     await this._authService.signOut();
+    //this._router.navigate(['auth']);
   }
 
   /**

@@ -1,3 +1,6 @@
+.authForms {
+  display: flex;
+}
 mat-form-field {
   margin: 2% auto;
   padding: 1% 1%;
@@ -7,7 +10,7 @@ mat-form-field {
 mat-hint {
   padding-bottom: 3%;
 }
-.signinform {
+.signInForm {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

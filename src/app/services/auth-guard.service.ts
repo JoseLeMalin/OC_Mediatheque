@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { AuthService } from './auth.service';
-import { getAuth, Auth, onAuthStateChanged } from 'firebase/auth';
+import { Injectable } from "@angular/core";
+import { CanActivate, Router } from "@angular/router";
+import { AuthService } from "./auth.service";
+import { getAuth, Auth } from "firebase/auth";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthGuardService implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
@@ -17,7 +17,10 @@ export class AuthGuardService implements CanActivate {
         if (user) {
           resolve(true);
         } else {
-          this.router.navigate(['/auth', 'signin']);
+          //this.router.navigate(['/auth', 'signin']);
+          console.log("Avant le auth");
+
+          this.router.navigate(["'auth'"]);
           reject(false);
         }
       });

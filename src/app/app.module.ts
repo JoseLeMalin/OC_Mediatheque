@@ -38,6 +38,8 @@ import { MatBadgeModule } from "@angular/material/badge";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatCommonModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { AuthComponent } from "./auth/auth/auth.component";
+import { MatTabsModule } from "@angular/material/tabs";
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     BookFormComponent,
     HeaderComponent,
     SidenavComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatChipsModule,
     MatCommonModule,
     MatDatepickerModule,
+    MatTabsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
